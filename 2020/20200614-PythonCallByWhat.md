@@ -1,4 +1,4 @@
-# Python Call By What
+# Python Call by What
 
 以下是几种常见的求值策略（或称调用模型、参数传递惯例、规约策略）在 FOLDOC ([Free On-Line Dictionary Of Computing](http://foldoc.org)) 中的定义：
 
