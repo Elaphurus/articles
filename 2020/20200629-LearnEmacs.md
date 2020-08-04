@@ -1,5 +1,7 @@
 # Learn Emacs in Y Minutes
 
+[GNU Emacs Reference Card](https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf)
+
 同时按下 `control` 和 `chr` 记作 `C-<chr>`（一般用于字符、行），同时按下 `meta` (`alt`, `option`) 和 `chr` 记作 `M-<chr>`（一般用于单词、句子、段落）。
 
 ### 启动/关闭/模式
