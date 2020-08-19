@@ -1,5 +1,6 @@
 # articles
 
+- [Learn Emacs in Y Minutes](2020/20200629-LearnEmacs.md)，2020-08-04
 - [静态分析中头文件的处理](2020/20200714-HandleHeadersForStaticAnalysis.md)，2020-07-14
 - [Python Call By What](2020/20200614-PythonCallByWhat.md)，2020-06-14
 - [语言特性](2020/20200605-语言特性.md)，2020-06-05
