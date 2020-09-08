@@ -12,7 +12,7 @@
 
 首先一个问题就是 `'Python.h' file not found`，这是 Python 外部函数接口 [Python/C API](https://docs.python.org/3/c-api/index.html#c-api-index) 定义的入口，而 C 编译器并不知道 Python 头文件的位置。所以我们用 `-I <dir>` 参数指定一个 include 搜索路径：
 
-`gcc -E -I<3.7/include/python3.6m> file.c`
+`gcc -E -I<3.6/include/python3.6m> file.c`
 
 具体路径可以用 `find / -name 'Python.h'` 搜索，同理补全更多的搜索路径之后就可以通过编译器的预处理阶段了。
 
