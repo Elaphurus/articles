@@ -122,7 +122,7 @@ var _int_sqrt = Module["_int_sqrt"] = createExportWrapper("int_sqrt");
 (export "int_sqrt" (func 1))
 ```
 
-所以在 JS 端直接调用就是 `_int_sqrt(10)`，这种方式更快，但是需要自己保证传入参数的类型和 wasm 实现相匹配（如此例中的 `i32`）。也可以使用 `ccall` 调用：
+所以在 JS 端直接调用就是 `_int_sqrt(10)` 或 `Module._int_sqrt(10)`，这种方式更快，但是需要自己保证传入参数的类型和 wasm 实现相匹配（如此例中的 `i32`）。也可以使用 `ccall` 调用：
 
 ```javascript
 var result = Module.ccall('int_sqrt', // C function name
@@ -194,7 +194,7 @@ function writeArrayToMemory(array, buffer) {
 }
 ```
 
-给出了入参为 `string` 和 `array` 类型时分配 Emscripten 堆的方式，外部函数 `stackAlloc` 计算存储位置：
+给出了入参为 `string` 和 `array` 类型时分配 JS 堆的方式，外部函数 `stackAlloc` 计算存储位置：
 
 ```javascript
 /** @type {function(...*):?} */
@@ -218,7 +218,7 @@ var stackAlloc = Module["stackAlloc"] = createExportWrapper("stackAlloc");
 (export "stackAlloc" (func 5))
 ```
 
-这被称作[单向透明的内存模型](https://www.cntofu.com/book/150/zh/ch2-c-js/ch2-03-mem-model.md)，即 C/C++ 的运行时堆和运行时栈全部在 Emscripten 堆（`Module.buffer`）上，JS 环境中的其他对象无法被 C/C++ 直接访问。
+这被称作[单向透明的内存模型](https://www.cntofu.com/book/150/zh/ch2-c-js/ch2-03-mem-model.md)，即 C/C++ 编译得到的 wasm 的运行时堆和运行时栈全部在 JS 堆（`Module.buffer`）上，JS 环境中的其他对象无法被 wasm 直接访问。
 
 `cwrap` 是对 `ccall` 的封装，方便多次调用：
 
@@ -258,7 +258,7 @@ console.log(int_sqrt(10, 5)); // 2
 console.log(_int_sqrt('a')); // 3
 ```
 
-程序点 1 输出 3（10 的平方根取整），这与 JS 的弱类型是一致的；程序点 2 输出 3 是因为没有参数个数检查，直接忽略了第二位置开始的所有参数；程序点 3 输出 0。三者没有报错。
+程序点 1 输出 3（10 的平方根取整），这与 JS 的弱类型是一致的；程序点 2 输出 3 是因为没有参数个数检查，直接忽略了第二位置开始的所有参数；程序点 3 输出 0。三者都没有报错。
 
 我们进一步探究一下内存模型。
 
@@ -339,7 +339,7 @@ C{g_int:13}
 C{g_double:123456.789000}
 ```
 
-可以看到，在 JS 中正确读取了 C/C++ 的内存数据；JS 中写入的数据，在 C/C++ 中亦能正确获取。
+可以看到，在 JS 中正确读取了 C/C++（wasm）的内存数据；JS 中写入的数据，在 wasm 中亦能正确获取。
 
 需要注意的是，`Module.buffer` 是一个 `ArrayBuffer` 对象，是保存二进制数据的一维数组，无法直接访问，必须通过某种类型的 TypedArray 方可对其进行读写。可以理解为 `ArrayBuffer` 是实际存储数据的容器，在其上创建的 TypedArray 则是把该容器当作某种类型的数组来使用。常用对应关系如下表：
 
@@ -350,4 +350,4 @@ C{g_double:123456.789000}
 | Module.HEAPU16 | Uint16Array | uint16 |
 | Module.HEAPF64 | Float64Array | double |
 
-所以在上例中，在 JS 中通过各种类型的 HEAP 对象视图访问 C/C++ 的内存数据时，地址必须对齐。
+所以在上例中，在 JS 中通过各种类型的 HEAP 对象视图访问 wasm 的内存数据时，地址必须对齐。
