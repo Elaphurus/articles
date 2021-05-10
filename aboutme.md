@@ -14,19 +14,16 @@ Programming Languages, Software Engineering, Security
 
 ## Education/Employment
 
-Ph.D. in Cyberspace Security, University of Science and Technology of China (USTC), 2020-?.
+- Ph.D. in Cyberspace Security, University of Science and Technology of China (USTC), 2020-?.
 Advisor: Yan Xiong, Professor, and Yu Zhang, Associate Professor.
-
-M.S. in Cyberspace Security, University of Science and Technology of China (USTC), 2018-2020.
+- M.S. in Cyberspace Security, University of Science and Technology of China (USTC), 2018-2020.
 Advisor: Yu Zhang, Associate Professor.
-
-Software Engineer, WUXI CAS PHOTONICS Co., Ltd., 2016-2017.
-
-B.S. in Internet of Things, Jiangnan University, 2012-2016.
+- Software Engineer, WUXI CAS PHOTONICS Co., Ltd., 2016-2017.
+- B.S. in Internet of Things, Jiangnan University, 2012-2016.
 
 ## Publications
 
-Mingzhe Hu, and Yu Zhang. The Python/C API: Evolution, Usage Statistics, and Bug Patterns. 27th IEEE International Conference on Software Analysis Evolution and Reengineering (SANER'20), pages 532-536, London, Ontario, Canada, Feb, 2020.
+- Mingzhe Hu, and Yu Zhang. The Python/C API: Evolution, Usage Statistics, and Bug Patterns. 27th IEEE International Conference on Software Analysis Evolution and Reengineering (SANER'20), pages 532-536, London, Ontario, Canada, Feb, 2020.
 
 ## Projects
 
